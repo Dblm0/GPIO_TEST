@@ -1,0 +1,60 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/GPIO_TEST.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                // "-c",
+                // "Release",
+                "-r",
+                "linux-arm",
+                "-o",
+                "publish",
+                "${workspaceFolder}/GPIO_TEST.csproj",
+                // "/property:GenerateFullPaths=true",
+                // "/consoleloggerparameters:NoSummary",
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "${workspaceFolder}/GPIO_TEST.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "copy-to-device",
+            "dependsOn": "publish",
+            "command": "C:/Program Files/Git/usr/bin/scp.exe",
+            "type": "process",
+            "args": [
+                "-r",
+                "-v",
+                "${workspaceFolder}/publish/*",
+                "pi@raspberry.local:~/gpioTests/dotnet"
+            ]
+        },
+    ]
+}

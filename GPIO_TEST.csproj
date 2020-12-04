@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
+		<RuntimeIdentifier>linux-arm</RuntimeIdentifier>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Iot.Device.Bindings" Version="1.2.0" />
+		<PackageReference Include="System.Device.GPIO" Version="1.2.0" />
+	</ItemGroup>
+
+</Project>
